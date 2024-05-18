@@ -1,0 +1,54 @@
+@if(booking){
+<div>
+    <div class="container-nav">
+        <h2 class="room-header">Book your slot in Room {{roomId == '0' ? 'One' : 'Two'}}</h2>
+        @if (currentWeek >0) {
+        <div>
+            Previous
+            <button (click)="prevWeek()" mat-icon-button
+                aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon>arrow_back_ios</mat-icon>
+            </button>
+        </div>
+        }
+
+        <div>
+            Next week
+            <button (click)="nextWeek()" mat-icon-button
+                aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="schedule">
+    @for( day of booking$ | async ; track day.date; let i = $index;)
+    {
+    <mat-card class="main-card">
+        <mat-card-header>
+            <mat-card-title class="main-card__title">Date: {{day.date | date: 'yyyy-MM-dd'}}</mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content>
+            @for(book of day.data; track book.id ; let slot = $index;)
+            {
+            <mat-card class="slot-card" (click)="selectSlot(book)" [ngClass]="{booked: !book.isAvailable}">
+                <mat-card-header>
+                    <mat-card-subtitle style="text-align: center;">Slot:{{slot +1}} </mat-card-subtitle>
+                    <mat-card-subtitle>{{book.startTime | date: 'yyyy-MM-dd hh:mm'}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    @if(book.userBooked){
+                    <div>This slot is booked by {{book.userBooked.name}} </div>
+                    }
+                    @else{
+                    <div class="status">{{book.isAvailable? 'Free': 'Booked'}}</div>
+                    }
+                </mat-card-content>
+            </mat-card>
+            <br />}
+        </mat-card-content>
+    </mat-card>
+    }
+</div>
+}

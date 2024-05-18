@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+// Include the prebuilt theme to inherit styles
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Define your custom primary color
+$my-primary: mat.define-palette(mat.$light-green-palette, 600, 800, 900);
+$my-accent: mat.define-palette(mat.$green-palette);
+$my-warn: mat.define-palette(mat.$red-palette);
+// Create the theme configuration
+$custom-theme: mat.define-light-theme((color: (primary: $my-primary, accent:$my-accent, warm:$my-warn )));
+
+// Include the custom theme
+@include mat.all-component-themes($custom-theme);
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+    width: 100vw;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    align-items: center;
+    padding-top: 2.5rem;
+}

@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+.custom-toolbar {
+    background-color: #eeee;
+    color: #323232;
+    font-size: 20px;
+
+
+    &__img {
+        background-color: rgba(0, 0, 0, 0.081);
+        border-radius: 30px;
+        padding: 2px
+    }
+
+    &__sublogo {
+        margin-left: .75rem;
+
+        &__emfasis {
+            font-family: "Poetsen One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+
+        }
+    }
+}
+
+.green-toolbar {
+    background-color: #64a70b;
+    color: #eeee;
+    font-size: 20px;
+    height: 10px;
+}

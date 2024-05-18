@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+.header__avatar {
+    background: #5c7c33;
+    color: white;
+    font-weight: 800;
+    font-size: large;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    border-radius: 30rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

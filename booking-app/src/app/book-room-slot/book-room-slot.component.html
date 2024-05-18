@@ -1,0 +1,51 @@
+<div>
+    <button routerLink=".." mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+</div>
+
+
+<div class="container ">
+    <mat-card class="flex-down" [formGroup]="form">
+        <mat-card-header class="header-down">
+            <mat-card-title>Book room #{{slot.roomId}} </mat-card-title></mat-card-header>
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstname">
+            @if(form.controls['firstname'].invalid){
+            <mat-error>First name required</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastname">
+            @if(form.controls['lastname'].invalid){
+            <mat-error>Last name required</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+            @if(form.controls['email'].invalid){
+            <mat-error>This should be an email</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Date of birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-card-actions align="end">
+            <button routerLink=".." mat-button>Back</button>
+            <button mat-button color="accent" (click)="bookTime()">Book</button>
+
+        </mat-card-actions>
+        @if (loadingSubject | async) {<mat-spinner></mat-spinner>}
+
+    </mat-card>
+
+
+</div>

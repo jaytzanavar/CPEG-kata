@@ -1,0 +1,10 @@
+@if (loadingSubject | async) {
+<div class="container"><mat-spinner></mat-spinner></div>
+}
+@if((slots | async)) {
+<div class="container">
+    @for (item of rooms ; track i; let i = $index;) {
+    <cpeg-room-card [availabilities]="slots | async" [roomNo]=item></cpeg-room-card>
+    }
+    @empty{ <div>No rooms available</div>}
+</div>}

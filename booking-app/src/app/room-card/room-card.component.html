@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+    <mat-card-header class="header">
+        <div mat-card-avatar class="header__avatar">R {{roomNo == 0 ? '1': '2'}}</div>
+        <mat-card-title>Room {{roomNo == 0? 'One': 'Two'}}</mat-card-title>
+        <mat-card-subtitle>Cpeg meeting Room</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Todays Availabilities: </p>
+        <p>{{ availabilities[roomNo!] == null ? '' : availabilities[roomNo!] }} Slots </p>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button [routerLink]="['/room', roomNo]" routerLinkActive="router-link-active" mat-button>Book
+            room</button>
+    </mat-card-actions>
+    <mat-card-footer>
+
+    </mat-card-footer>
+</mat-card>
